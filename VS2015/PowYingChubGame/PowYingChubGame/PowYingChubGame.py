@@ -11,6 +11,8 @@ import socket
 import time
 import math
 
+print "test1"
+
 cap = cv2.VideoCapture(0)
 while(cap.isOpened()):
     ret, img = cap.read()
