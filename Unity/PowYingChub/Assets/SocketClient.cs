@@ -15,6 +15,7 @@ public class SocketClient : MonoBehaviour {
 	private float xPos = 10.0f;
 	private int test;
 	public int test2;
+	public int test3;
 	Thread receiveThread;
 	UdpClient client;
 	public int port;
