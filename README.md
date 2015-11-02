@@ -1,2 +1,2 @@
-# opencv_project_1
+# PowYingChub Game
 about project in class room
