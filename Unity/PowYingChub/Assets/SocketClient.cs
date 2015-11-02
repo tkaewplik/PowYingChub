@@ -13,7 +13,7 @@ public class SocketClient : MonoBehaviour {
 	//private const int listenPort = 5005;
 	public GameObject hero;
 	private float xPos = 10.0f;
-
+	private int test;
 	Thread receiveThread;
 	UdpClient client;
 	public int port;
