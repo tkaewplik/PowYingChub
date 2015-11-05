@@ -11,17 +11,28 @@ import socket
 import time
 import math
 
-print "test1"
+
+UDP_IP = "127.0.0.1"
+UDP_PORT = 5005
+
+print "UDP target IP:", UDP_IP
+print "UDP target port:", UDP_PORT
+#print "message:", MESSAGE
+
+sock = socket.socket(socket.AF_INET, # Internet
+                     socket.SOCK_DGRAM) # UDP
 
 cap = cv2.VideoCapture(0)
+_ , initImg = cap.read()
 while(cap.isOpened()):
-    ret, img = cap.read()
+    ret, img = cap.read()   
+    #img -= initImg; 
     cv2.rectangle(img,(300,300),(100,100),(0,255,0),0)
     crop_img = img[100:300, 100:300]
     grey = cv2.cvtColor(crop_img, cv2.COLOR_BGR2GRAY)
     value = (35, 35)
     blurred = cv2.GaussianBlur(grey, value, 0)
-    _, thresh1 = cv2.threshold(blurred, 127, 255,
+    _, thresh1 = cv2.threshold(blurred, 63, 255,
                                cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
     cv2.imshow('Thresholded', thresh1)
     _ , contours, hierarchy = cv2.findContours(thresh1.copy(),cv2.RETR_TREE, \
@@ -60,18 +71,23 @@ while(cap.isOpened()):
         cv2.line(crop_img,start,end,[0,255,0],2)
         #cv2.circle(crop_img,far,5,[0,0,255],-1)
     if count_defects == 1:
-        cv2.putText(img,"I am Vipul", (50,50), cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
+        #print w*h
+        if w * h > 14000 and w*h < 24000:
+            cv2.putText(img,"Rock", (50,50), cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
+            sock.sendto("Rock" , (UDP_IP, UDP_PORT))
     elif count_defects == 2:
-        str = "This is a basic hand gesture recognizer"
+        str = "Scisor"
         print str
         cv2.putText(img, str, (5,50), cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
+        sock.sendto("Scisor" , (UDP_IP, UDP_PORT))
     elif count_defects == 3:
-        cv2.putText(img,"This is 4 :P", (50,50), cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
+        cv2.putText(img,"Noting3", (50,50), cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
     elif count_defects == 4:
-        cv2.putText(img,"Hi!!!", (50,50), cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
+        cv2.putText(img,"Nothing4", (50,50), cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
     else:
-        cv2.putText(img,"Hello World!!!", (50,50),\
+        cv2.putText(img,"Paper", (50,50),\
                     cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
+        sock.sendto("Paper" , (UDP_IP, UDP_PORT))
     #cv2.imshow('drawing', drawing)
     #cv2.imshow('end', crop_img)
     cv2.imshow('Gesture', img)

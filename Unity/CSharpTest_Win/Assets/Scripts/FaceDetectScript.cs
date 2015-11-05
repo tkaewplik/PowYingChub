@@ -53,7 +53,7 @@ public class FaceDetectScript : MonoBehaviour
         using (IplImage img = Cv.CloneImage(frame))
         using (IplImage smallImg = new IplImage(new CvSize(Cv.Round(img.Width / Scale), Cv.Round(img.Height / Scale)), BitDepth.U8, 1))
         {
-            // 顔検出用の画像の生成
+            // ?????o?p????????????
             using (IplImage gray = new IplImage(img.Size, BitDepth.U8, 1))
             {
                 Cv.CvtColor(img, gray, ColorConversion.BgrToGray);
@@ -65,10 +65,10 @@ public class FaceDetectScript : MonoBehaviour
             {
                 storage.Clear();
 
-                // 顔の検出
+                // ???????o
                 CvSeq<CvAvgComp> faces = Cv.HaarDetectObjects(smallImg, cascade, storage, ScaleFactor, MinNeighbors, 0, new CvSize(64, 64));
 
-                // 検出した箇所にまるをつける
+                // ???o??????????????????????
                 for (int i = 0; i < faces.Total; i++)
                 {
                     CvRect r = faces[i].Value.Rect;
@@ -88,7 +88,7 @@ public class FaceDetectScript : MonoBehaviour
                 }
             }
 
-            // ウィンドウに表示
+            // ?E?B???h?E???\??
             Cv.ShowImage("FaceDetect", img);
         }
     }

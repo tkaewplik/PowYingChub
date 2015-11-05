@@ -1,0 +1,9 @@
+-How to build
+1.Open this project with Unity.
+2.File -> Build & Run
+3.If you get an error "Lexixal orPreprocessor Issue 'opencv2/opencv.hpp' file not found" in Xcode,
+add opencv2.framework to "Link Binary With Librarys" in the Build Phases Tab.
+(You can find opencv2.framework in NativePluginTest folder.)
+4.Add haarcascade_frontalface_default.xml to "Copy Bundle Resources" in the Build Phases Tab.
+(You can find haarcascade_frontalface_default.xml in NativePluginTest folder.)
+5.Run in Xcode.

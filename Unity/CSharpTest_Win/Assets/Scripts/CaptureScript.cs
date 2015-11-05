@@ -26,7 +26,7 @@ public class CaptureScript : MonoBehaviour {
         IplImage frame = Cv.QueryFrame(capture);
         Color[] cols = new Color[texture.width*texture.height];
         int t1 = System.Environment.TickCount;
-        // ‚±‚Ìƒ‹[ƒv‚ªd‚¢
+        // ???????[?v???d??
         for (int y = 0; y < texture.height; y++) {
             for (int x = 0; x < texture.width; x++) {
                 CvColor col = frame.Get2D(y, x);

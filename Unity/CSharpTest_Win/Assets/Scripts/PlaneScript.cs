@@ -13,6 +13,6 @@ public class PlaneScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        renderer.material.mainTexture = captureScript.texture;
+        GetComponent<Renderer>().material.mainTexture = captureScript.texture;
     }
 }
