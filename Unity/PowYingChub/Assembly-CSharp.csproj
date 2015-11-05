@@ -49,6 +49,7 @@
      <Compile Include="Assets\Cubes.cs" />
      <Compile Include="Assets\Move.cs" />
      <Compile Include="Assets\SocketClient.cs" />
+     <Compile Include="Assets\opencvTest.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
